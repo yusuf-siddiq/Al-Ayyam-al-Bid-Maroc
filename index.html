@@ -19,110 +19,115 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
 
-  /* LANG SWITCHER */
+  /* LANG BAR */
   .lang-bar {
-    background: #f4f7f5;
-    border-bottom: 1px solid #d1e4da;
-    display: flex; justify-content: center;
-    gap: 8px; padding: 10px 20px;
+    background: #f4f7f5; border-bottom: 1px solid #d1e4da;
+    display: flex; justify-content: center; gap: 8px; padding: 10px 20px;
   }
   .lang-btn {
-    background: white;
-    border: 2px solid var(--line);
-    border-radius: 999px;
-    padding: 6px 18px;
-    font-size: 13px; font-weight: 600;
-    cursor: pointer; color: var(--muted);
-    transition: all 0.2s;
-    font-family: 'Inter', sans-serif;
+    background: white; border: 2px solid var(--line);
+    border-radius: 999px; padding: 6px 18px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    color: var(--muted); transition: all 0.2s; font-family: 'Inter', sans-serif;
   }
   .lang-btn:hover { border-color: var(--green); color: var(--green); }
-  .lang-btn.active {
-    background: var(--green);
-    border-color: var(--green);
-    color: white;
-  }
+  .lang-btn.active { background: var(--green); border-color: var(--green); color: white; }
   .lang-btn[data-lang="ar"] { font-family: 'Amiri', serif; font-size: 15px; }
 
+  /* HEADER */
   header {
     background: var(--green); color: white;
     text-align: center; padding: 44px 24px 36px;
     position: relative; overflow: hidden;
   }
   header::before {
-    content: '☽'; position: absolute;
-    font-size: 200px; opacity: 0.04;
-    top: -30px; right: -20px;
+    content: '☽'; position: absolute; font-size: 220px;
+    opacity: 0.04; top: -30px; right: -20px;
   }
   .header-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 999px; font-size: 11px;
-    font-weight: 600; letter-spacing: 0.12em;
+    display: inline-block; background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; padding: 4px 14px;
     margin-bottom: 16px; color: rgba(255,255,255,0.9);
   }
   header h1 {
     font-family: 'Amiri', serif;
-    font-size: clamp(24px, 5vw, 38px);
+    font-size: clamp(26px, 4vw, 42px);
     font-weight: 700; margin-bottom: 8px;
   }
-  header p { font-size: 14px; opacity: 0.8; max-width: 480px; margin: 0 auto; }
+  header p { font-size: 14px; opacity: 0.8; max-width: 560px; margin: 0 auto; }
 
-  .container { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
+  /* LAYOUT */
+  .page-wrapper {
+    max-width: 1200px; margin: 0 auto;
+    padding: 36px 24px 60px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 24px; }
 
   .hadith-block {
-    background: var(--gold-light);
-    border-left: 4px solid var(--gold);
-    margin: 32px 0; padding: 20px 24px;
-    border-radius: 0 8px 8px 0;
+    background: var(--gold-light); border-left: 4px solid var(--gold);
+    padding: 20px 22px; border-radius: 0 8px 8px 0;
   }
-  [dir="rtl"] .hadith-block {
-    border-left: none;
-    border-right: 4px solid var(--gold);
-    border-radius: 8px 0 0 8px;
-  }
+  [dir="rtl"] .hadith-block { border-left: none; border-right: 4px solid var(--gold); border-radius: 8px 0 0 8px; }
   .hadith-block p {
-    font-family: 'Amiri', serif; font-size: 17px;
+    font-family: 'Amiri', serif; font-size: 16px;
     color: #5a4010; line-height: 1.8; font-style: italic;
   }
   .hadith-block cite {
-    display: block; margin-top: 8px;
-    font-size: 12px; color: var(--muted);
-    font-style: normal; font-family: 'Inter', sans-serif;
+    display: block; margin-top: 10px; font-size: 12px;
+    color: var(--muted); font-style: normal; font-family: 'Inter', sans-serif;
   }
-  [dir="rtl"] .hadith-block cite { font-family: 'Amiri', serif; font-size: 14px; }
+  [dir="rtl"] .hadith-block cite { font-family: 'Amiri', serif; font-size: 13px; }
 
   .upcoming-banner {
-    background: var(--green); color: white;
-    border-radius: 8px; padding: 12px 18px;
-    font-size: 14px; font-weight: 500;
-    margin-bottom: 28px;
-    display: flex; align-items: center; gap: 10px;
+    background: var(--green); color: white; border-radius: 10px;
+    padding: 14px 18px; font-size: 14px; font-weight: 500;
+    display: flex; flex-direction: column; gap: 4px;
   }
-  [dir="rtl"] .upcoming-banner { flex-direction: row-reverse; font-family: 'Amiri', serif; font-size: 16px; }
-  .upcoming-banner .moon { font-size: 20px; }
+  .upcoming-banner .moon { font-size: 22px; margin-bottom: 4px; }
+  .upcoming-banner .label { font-size: 11px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.08em; }
+  .upcoming-banner .dates { font-size: 16px; font-weight: 700; }
+  [dir="rtl"] .upcoming-banner { font-family: 'Amiri', serif; }
+
+  .cal-btn {
+    background: var(--green); color: white; border: none;
+    border-radius: 10px; padding: 14px 20px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; font-family: 'Inter', sans-serif;
+    transition: opacity 0.2s; width: 100%;
+  }
+  .cal-btn:hover { opacity: 0.85; }
+  [dir="rtl"] .cal-btn { font-family: 'Amiri', serif; font-size: 16px; }
+
+  /* MAIN CONTENT */
+  .main-content { min-width: 0; }
 
   .year-title {
-    font-size: 20px; font-weight: 700; color: var(--green);
-    margin: 36px 0 14px; padding-bottom: 10px;
+    font-size: 22px; font-weight: 700; color: var(--green);
+    margin: 0 0 14px; padding-bottom: 10px;
     border-bottom: 2px solid var(--green);
     display: flex; align-items: center; gap: 8px;
   }
-  [dir="rtl"] .year-title { font-family: 'Amiri', serif; font-size: 22px; justify-content: flex-end; }
+  .year-title + table { margin-bottom: 36px; }
+  [dir="rtl"] .year-title { font-family: 'Amiri', serif; font-size: 24px; justify-content: flex-end; }
 
   table {
-    width: 100%; border-collapse: collapse;
-    background: white; border-radius: 10px;
-    overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    margin-bottom: 8px;
+    width: 100%; border-collapse: collapse; background: white;
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07); margin-bottom: 36px;
   }
   thead { background: var(--green); color: white; }
   thead th {
-    padding: 11px 16px; text-align: left;
-    font-size: 12px; font-weight: 600;
-    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 12px 16px; text-align: left; font-size: 12px;
+    font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
   }
   [dir="rtl"] thead th { text-align: right; font-family: 'Amiri', serif; font-size: 14px; letter-spacing: 0; }
   tbody tr { border-bottom: 1px solid var(--line); }
@@ -131,36 +136,43 @@
   [dir="rtl"] td { text-align: right; font-family: 'Amiri', serif; font-size: 16px; }
 
   .month-sep td {
-    background: #f0f7f4; font-size: 12px;
-    font-weight: 700; color: var(--green);
-    letter-spacing: 0.08em; text-transform: uppercase;
+    background: #f0f7f4; font-size: 12px; font-weight: 700;
+    color: var(--green); letter-spacing: 0.08em; text-transform: uppercase;
     padding: 7px 16px; border-bottom: 1px solid #c8e0d5;
   }
-  [dir="rtl"] .month-sep td { text-align: right; font-family: 'Amiri', serif; font-size: 15px; letter-spacing: 0; }
+  [dir="rtl"] .month-sep td { text-align: right; font-family: 'Amiri', serif; font-size: 14px; letter-spacing: 0; }
 
   .row-13 td { font-weight: 700; color: var(--green); }
   .row-13 .day-num { background: var(--green); color: white; }
 
   .day-num {
-    display: inline-flex; align-items: center;
-    justify-content: center; width: 28px; height: 28px;
-    border-radius: 50%; font-size: 13px; font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    font-size: 13px; font-weight: 600;
     background: var(--green-light); color: var(--green);
   }
-
   tr.highlight { background: #e8f4ee; }
-  tr.past td { opacity: 0.35; }
 
+  /* FOOTER */
   footer {
-    text-align: center; padding: 28px 20px;
-    font-size: 12px; color: var(--muted);
-    border-top: 1px solid var(--line);
-    line-height: 1.9; max-width: 720px; margin: 0 auto;
+    text-align: center; padding: 28px 20px; font-size: 12px;
+    color: var(--muted); border-top: 1px solid var(--line); line-height: 1.9;
   }
   [dir="rtl"] footer { font-family: 'Amiri', serif; font-size: 14px; }
   footer strong { color: var(--ink); }
 
-  /* Hide/show lang content */
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .page-wrapper {
+      grid-template-columns: 1fr;
+      padding: 20px 16px 40px;
+      gap: 24px;
+    }
+    .sidebar { position: static; order: -1; }
+    .hadith-block { display: none; }
+  }
+
+  /* TRANSLATIONS */
   .t { display: none; }
   .t.active { display: inline; }
   .tb { display: none; }
@@ -169,27 +181,18 @@
 </head>
 <body>
 
-<!-- LANG SWITCHER -->
 <div class="lang-bar">
   <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
   <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
   <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">🇲🇦 العربية</button>
 </div>
 
-<!-- DOWNLOAD ICS BUTTON -->
-<div style="background:#fff; border-bottom:1px solid #d1e4da; display:flex; justify-content:center; padding:10px 20px;">
-  <button onclick="downloadICS()" style="
-    background:#1a6e4a; color:white; border:none; border-radius:8px;
-    padding:10px 24px; font-size:14px; font-weight:600;
-    cursor:pointer; display:flex; align-items:center; gap:8px;
-    font-family:Inter,sans-serif; transition:opacity 0.2s;
-  " onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
-    📅 <span class="t fr active">Ajouter à mon calendrier</span><span class="t en">Add to my calendar</span><span class="t ar" style="font-family:Amiri,serif;font-size:16px;">إضافة إلى تقويمي</span>
-  </button>
-</div>
-
 <header>
-  <div class="header-badge">🇲🇦 <span class="t fr active">Calendrier Marocain · 1448–1449 H</span><span class="t en">Moroccan Calendar · 1448–1449 H</span><span class="t ar">التقويم المغربي · 1448–1449 هـ</span></div>
+  <div class="header-badge">🇲🇦
+    <span class="t fr active">Calendrier Marocain · 1448–1449 H</span>
+    <span class="t en">Moroccan Calendar · 1448–1449 H</span>
+    <span class="t ar">التقويم المغربي · 1448–1449 هـ</span>
+  </div>
   <h1>
     <span class="t fr active">Jours Blancs — Al-Ayyam Al-Bid</span>
     <span class="t en">White Days — Al-Ayyam Al-Bid</span>
@@ -197,207 +200,196 @@
   </h1>
   <p>
     <span class="t fr active">Les 13, 14 et 15 de chaque mois lunaire · 2026 & 2027<br>selon les calendriers hégiriens 1448 & 1449</span>
-    <span class="t en">The 13th, 14th and 15th of each lunar month · 2026 & 2027<br>based on the Hijri calendars 1448 & 1449</span>
-    <span class="t ar">الأيام الثالث عشر والرابع عشر والخامس عشر من كل شهر هجري · 2026 و2027<br>وفق التقويمين الهجريين 1448 و1449</span>
+    <span class="t en">The 13th, 14th and 15th of each lunar month · 2026 & 2027<br>based on Hijri calendars 1448 & 1449</span>
+    <span class="t ar">الأيام الثالث عشر والرابع عشر والخامس عشر من كل شهر · 2026 و2027<br>وفق التقويمين الهجريين 1448 و1449</span>
   </p>
 </header>
 
-<div class="container">
+<div class="page-wrapper">
 
-  <div class="hadith-block">
-    <p>
-      <span class="t fr active">« Ô Abou Dharr, si tu jeûnes trois jours chaque mois, jeûne les treizième, quatorzième et quinzième. »</span>
-      <span class="t en">"O Abu Dharr, if you fast three days every month, then fast the thirteenth, fourteenth and fifteenth."</span>
-      <span class="t ar">« يا أبا ذَرٍّ، إذا صُمتَ من الشهر ثلاثةَ أيام فصُم ثلاثَ عشرةَ وأربعَ عشرةَ وخمسَ عشرةَ »</span>
-    </p>
-    <cite>— At-Tirmidhî (n°761) · An-Nasâï (n°2424)</cite>
-  </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-  <div class="upcoming-banner">
-    <span class="moon">🌕</span>
-    <span>
-      <span class="t fr active">Prochains jours blancs : <strong>29 juin · 30 juin · 1er juillet 2026</strong></span>
-      <span class="t en">Next white days: <strong>June 29 · June 30 · July 1, 2026</strong></span>
-      <span class="t ar">الأيام البيض القادمة: <strong>29 يونيو · 30 يونيو · 1 يوليوز 2026</strong></span>
-    </span>
-  </div>
+    <div class="hadith-block">
+      <p>
+        <span class="t fr active">« Ô Abou Dharr, si tu jeûnes trois jours chaque mois, jeûne les treizième, quatorzième et quinzième. »</span>
+        <span class="t en">"O Abu Dharr, if you fast three days every month, then fast the thirteenth, fourteenth and fifteenth."</span>
+        <span class="t ar">« يا أبا ذَرٍّ، إذا صُمتَ من الشهر ثلاثةَ أيام فصُم ثلاثَ عشرةَ وأربعَ عشرةَ وخمسَ عشرةَ »</span>
+      </p>
+      <cite>— At-Tirmidhî (n°761) · An-Nasâï (n°2424)</cite>
+    </div>
 
-  <!-- ======= 2026 ======= -->
-  <div class="year-title">
-    ☽ <span class="t fr active">2026</span><span class="t en">2026</span><span class="t ar">2026</span>
-  </div>
+    <div class="upcoming-banner">
+      <span class="moon">🌕</span>
+      <span class="label">
+        <span class="t fr active">Prochains jours blancs</span>
+        <span class="t en">Next white days</span>
+        <span class="t ar">الأيام البيض القادمة</span>
+      </span>
+      <span class="dates">
+        <span class="t fr active">29 juin · 30 juin · 1er juillet 2026</span>
+        <span class="t en">June 29 · June 30 · July 1, 2026</span>
+        <span class="t ar">29 · 30 يونيو · 1 يوليوز 2026</span>
+      </span>
+    </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th><span class="t fr active">Jour hégirien</span><span class="t en">Hijri day</span><span class="t ar">اليوم الهجري</span></th>
-        <th><span class="t fr active">Mois lunaire</span><span class="t en">Lunar month</span><span class="t ar">الشهر الهجري</span></th>
-        <th><span class="t fr active">Date — Maroc</span><span class="t en">Date — Morocco</span><span class="t ar">التاريخ — المغرب</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Muharram 1448</span><span class="t en">Muharram 1448</span><span class="t ar">مُحَرَّم 1448</span></td></tr>
-      <tr class="row-13 highlight"><td><span class="day-num">13</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><strong><span class="t fr active">29 juin 2026</span><span class="t en">June 29, 2026</span><span class="t ar">29 يونيو 2026</span></strong></td></tr>
-      <tr class="highlight"><td><span class="day-num">14</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><strong><span class="t fr active">30 juin 2026</span><span class="t en">June 30, 2026</span><span class="t ar">30 يونيو 2026</span></strong></td></tr>
-      <tr class="highlight"><td><span class="day-num">15</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><strong><span class="t fr active">1er juillet 2026</span><span class="t en">July 1, 2026</span><span class="t ar">1 يوليوز 2026</span></strong></td></tr>
+    <button class="cal-btn" onclick="downloadICS()">
+      📅
+      <span class="t fr active">Ajouter à mon calendrier</span>
+      <span class="t en">Add to my calendar</span>
+      <span class="t ar">إضافة إلى تقويمي</span>
+    </button>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Safar 1448</span><span class="t en">Safar 1448</span><span class="t ar">صَفَر 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">27 juillet 2026</span><span class="t en">July 27, 2026</span><span class="t ar">27 يوليوز 2026</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">28 juillet 2026</span><span class="t en">July 28, 2026</span><span class="t ar">28 يوليوز 2026</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">29 juillet 2026</span><span class="t en">July 29, 2026</span><span class="t ar">29 يوليوز 2026</span></td></tr>
+  </aside>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Awwal 1448</span><span class="t en">Rabi' al-Awwal 1448</span><span class="t ar">رَبيع الأوَّل 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">26 août 2026</span><span class="t en">Aug 26, 2026</span><span class="t ar">26 غشت 2026</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">27 août 2026</span><span class="t en">Aug 27, 2026</span><span class="t ar">27 غشت 2026</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">28 août 2026</span><span class="t en">Aug 28, 2026</span><span class="t ar">28 غشت 2026</span></td></tr>
+  <!-- MAIN -->
+  <main class="main-content">
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Thani 1448</span><span class="t en">Rabi' al-Thani 1448</span><span class="t ar">رَبيع الثاني 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">24 septembre 2026</span><span class="t en">Sep 24, 2026</span><span class="t ar">24 شتنبر 2026</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">25 septembre 2026</span><span class="t en">Sep 25, 2026</span><span class="t ar">25 شتنبر 2026</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">26 septembre 2026</span><span class="t en">Sep 26, 2026</span><span class="t ar">26 شتنبر 2026</span></td></tr>
+    <div class="year-title">☽ 2026</div>
+    <table>
+      <thead>
+        <tr>
+          <th><span class="t fr active">Jour hégirien</span><span class="t en">Hijri day</span><span class="t ar">اليوم الهجري</span></th>
+          <th><span class="t fr active">Mois lunaire</span><span class="t en">Lunar month</span><span class="t ar">الشهر الهجري</span></th>
+          <th><span class="t fr active">Date — Maroc</span><span class="t en">Date — Morocco</span><span class="t ar">التاريخ — المغرب</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Muharram 1448</span><span class="t en">Muharram 1448</span><span class="t ar">مُحَرَّم 1448</span></td></tr>
+        <tr class="row-13 highlight"><td><span class="day-num">13</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><strong><span class="t fr active">29 juin 2026</span><span class="t en">June 29, 2026</span><span class="t ar">29 يونيو 2026</span></strong></td></tr>
+        <tr class="highlight"><td><span class="day-num">14</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><strong><span class="t fr active">30 juin 2026</span><span class="t en">June 30, 2026</span><span class="t ar">30 يونيو 2026</span></strong></td></tr>
+        <tr class="highlight"><td><span class="day-num">15</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><strong><span class="t fr active">1er juillet 2026</span><span class="t en">July 1, 2026</span><span class="t ar">1 يوليوز 2026</span></strong></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Awwal 1448</span><span class="t en">Jumada al-Awwal 1448</span><span class="t ar">جُمادى الأولى 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">24 octobre 2026</span><span class="t en">Oct 24, 2026</span><span class="t ar">24 أكتوبر 2026</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">25 octobre 2026</span><span class="t en">Oct 25, 2026</span><span class="t ar">25 أكتوبر 2026</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">26 octobre 2026</span><span class="t en">Oct 26, 2026</span><span class="t ar">26 أكتوبر 2026</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Safar 1448</span><span class="t en">Safar 1448</span><span class="t ar">صَفَر 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">27 juillet 2026</span><span class="t en">July 27, 2026</span><span class="t ar">27 يوليوز 2026</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">28 juillet 2026</span><span class="t en">July 28, 2026</span><span class="t ar">28 يوليوز 2026</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">29 juillet 2026</span><span class="t en">July 29, 2026</span><span class="t ar">29 يوليوز 2026</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Thani 1448</span><span class="t en">Jumada al-Thani 1448</span><span class="t ar">جُمادى الثانية 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">23 novembre 2026</span><span class="t en">Nov 23, 2026</span><span class="t ar">23 نونبر 2026</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">24 novembre 2026</span><span class="t en">Nov 24, 2026</span><span class="t ar">24 نونبر 2026</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">25 novembre 2026</span><span class="t en">Nov 25, 2026</span><span class="t ar">25 نونبر 2026</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Awwal 1448</span><span class="t en">Rabi' al-Awwal 1448</span><span class="t ar">رَبيع الأوَّل 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">26 août 2026</span><span class="t en">Aug 26, 2026</span><span class="t ar">26 غشت 2026</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">27 août 2026</span><span class="t en">Aug 27, 2026</span><span class="t ar">27 غشت 2026</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">28 août 2026</span><span class="t en">Aug 28, 2026</span><span class="t ar">28 غشت 2026</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Rajab 1448</span><span class="t en">Rajab 1448</span><span class="t ar">رَجَب 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">22 décembre 2026</span><span class="t en">Dec 22, 2026</span><span class="t ar">22 دجنبر 2026</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">23 décembre 2026</span><span class="t en">Dec 23, 2026</span><span class="t ar">23 دجنبر 2026</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">24 décembre 2026</span><span class="t en">Dec 24, 2026</span><span class="t ar">24 دجنبر 2026</span></td></tr>
-    </tbody>
-  </table>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Thani 1448</span><span class="t en">Rabi' al-Thani 1448</span><span class="t ar">رَبيع الثاني 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">24 septembre 2026</span><span class="t en">Sep 24, 2026</span><span class="t ar">24 شتنبر 2026</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">25 septembre 2026</span><span class="t en">Sep 25, 2026</span><span class="t ar">25 شتنبر 2026</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">26 septembre 2026</span><span class="t en">Sep 26, 2026</span><span class="t ar">26 شتنبر 2026</span></td></tr>
 
-  <!-- ======= 2027 ======= -->
-  <div class="year-title">
-    ☽ 2027
-  </div>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Awwal 1448</span><span class="t en">Jumada al-Awwal 1448</span><span class="t ar">جُمادى الأولى 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">24 octobre 2026</span><span class="t en">Oct 24, 2026</span><span class="t ar">24 أكتوبر 2026</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">25 octobre 2026</span><span class="t en">Oct 25, 2026</span><span class="t ar">25 أكتوبر 2026</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">26 octobre 2026</span><span class="t en">Oct 26, 2026</span><span class="t ar">26 أكتوبر 2026</span></td></tr>
 
-  <table>
-    <thead>
-      <tr>
-        <th><span class="t fr active">Jour hégirien</span><span class="t en">Hijri day</span><span class="t ar">اليوم الهجري</span></th>
-        <th><span class="t fr active">Mois lunaire</span><span class="t en">Lunar month</span><span class="t ar">الشهر الهجري</span></th>
-        <th><span class="t fr active">Date — Maroc</span><span class="t en">Date — Morocco</span><span class="t ar">التاريخ — المغرب</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Sha'ban 1448</span><span class="t en">Sha'ban 1448</span><span class="t ar">شَعْبان 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Sha'ban</span><span class="t en">Sha'ban</span><span class="t ar">شَعْبان</span></td><td><span class="t fr active">21 janvier 2027</span><span class="t en">Jan 21, 2027</span><span class="t ar">21 يناير 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Sha'ban</span><span class="t en">Sha'ban</span><span class="t ar">شَعْبان</span></td><td><span class="t fr active">22 janvier 2027</span><span class="t en">Jan 22, 2027</span><span class="t ar">22 يناير 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Sha'ban</span><span class="t en">Sha'ban</span><span class="t ar">شَعْبان</span></td><td><span class="t fr active">23 janvier 2027</span><span class="t en">Jan 23, 2027</span><span class="t ar">23 يناير 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Thani 1448</span><span class="t en">Jumada al-Thani 1448</span><span class="t ar">جُمادى الثانية 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">23 novembre 2026</span><span class="t en">Nov 23, 2026</span><span class="t ar">23 نونبر 2026</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">24 novembre 2026</span><span class="t en">Nov 24, 2026</span><span class="t ar">24 نونبر 2026</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">25 novembre 2026</span><span class="t en">Nov 25, 2026</span><span class="t ar">25 نونبر 2026</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Ramadan 1448</span><span class="t en">Ramadan 1448</span><span class="t ar">رَمَضان 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Ramadan</span><span class="t en">Ramadan</span><span class="t ar">رَمَضان</span></td><td><span class="t fr active">20 février 2027</span><span class="t en">Feb 20, 2027</span><span class="t ar">20 فبراير 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Ramadan</span><span class="t en">Ramadan</span><span class="t ar">رَمَضان</span></td><td><span class="t fr active">21 février 2027</span><span class="t en">Feb 21, 2027</span><span class="t ar">21 فبراير 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Ramadan</span><span class="t en">Ramadan</span><span class="t ar">رَمَضان</span></td><td><span class="t fr active">22 février 2027</span><span class="t en">Feb 22, 2027</span><span class="t ar">22 فبراير 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Rajab 1448</span><span class="t en">Rajab 1448</span><span class="t ar">رَجَب 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">22 décembre 2026</span><span class="t en">Dec 22, 2026</span><span class="t ar">22 دجنبر 2026</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">23 décembre 2026</span><span class="t en">Dec 23, 2026</span><span class="t ar">23 دجنبر 2026</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">24 décembre 2026</span><span class="t en">Dec 24, 2026</span><span class="t ar">24 دجنبر 2026</span></td></tr>
+      </tbody>
+    </table>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Shawwal 1448</span><span class="t en">Shawwal 1448</span><span class="t ar">شَوَّال 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Shawwal</span><span class="t en">Shawwal</span><span class="t ar">شَوَّال</span></td><td><span class="t fr active">21 mars 2027</span><span class="t en">Mar 21, 2027</span><span class="t ar">21 مارس 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Shawwal</span><span class="t en">Shawwal</span><span class="t ar">شَوَّال</span></td><td><span class="t fr active">22 mars 2027</span><span class="t en">Mar 22, 2027</span><span class="t ar">22 مارس 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Shawwal</span><span class="t en">Shawwal</span><span class="t ar">شَوَّال</span></td><td><span class="t fr active">23 mars 2027</span><span class="t en">Mar 23, 2027</span><span class="t ar">23 مارس 2027</span></td></tr>
+    <div class="year-title">☽ 2027</div>
+    <table>
+      <thead>
+        <tr>
+          <th><span class="t fr active">Jour hégirien</span><span class="t en">Hijri day</span><span class="t ar">اليوم الهجري</span></th>
+          <th><span class="t fr active">Mois lunaire</span><span class="t en">Lunar month</span><span class="t ar">الشهر الهجري</span></th>
+          <th><span class="t fr active">Date — Maroc</span><span class="t en">Date — Morocco</span><span class="t ar">التاريخ — المغرب</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Sha'ban 1448</span><span class="t en">Sha'ban 1448</span><span class="t ar">شَعْبان 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Sha'ban</span><span class="t en">Sha'ban</span><span class="t ar">شَعْبان</span></td><td><span class="t fr active">21 janvier 2027</span><span class="t en">Jan 21, 2027</span><span class="t ar">21 يناير 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Sha'ban</span><span class="t en">Sha'ban</span><span class="t ar">شَعْبان</span></td><td><span class="t fr active">22 janvier 2027</span><span class="t en">Jan 22, 2027</span><span class="t ar">22 يناير 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Sha'ban</span><span class="t en">Sha'ban</span><span class="t ar">شَعْبان</span></td><td><span class="t fr active">23 janvier 2027</span><span class="t en">Jan 23, 2027</span><span class="t ar">23 يناير 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Dhu al-Qadah 1448</span><span class="t en">Dhu al-Qadah 1448</span><span class="t ar">ذو القَعْدة 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Dhu al-Qadah</span><span class="t en">Dhu al-Qadah</span><span class="t ar">ذو القعدة</span></td><td><span class="t fr active">20 avril 2027</span><span class="t en">Apr 20, 2027</span><span class="t ar">20 أبريل 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Dhu al-Qadah</span><span class="t en">Dhu al-Qadah</span><span class="t ar">ذو القعدة</span></td><td><span class="t fr active">21 avril 2027</span><span class="t en">Apr 21, 2027</span><span class="t ar">21 أبريل 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Dhu al-Qadah</span><span class="t en">Dhu al-Qadah</span><span class="t ar">ذو القعدة</span></td><td><span class="t fr active">22 avril 2027</span><span class="t en">Apr 22, 2027</span><span class="t ar">22 أبريل 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Ramadan 1448</span><span class="t en">Ramadan 1448</span><span class="t ar">رَمَضان 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Ramadan</span><span class="t en">Ramadan</span><span class="t ar">رَمَضان</span></td><td><span class="t fr active">20 février 2027</span><span class="t en">Feb 20, 2027</span><span class="t ar">20 فبراير 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Ramadan</span><span class="t en">Ramadan</span><span class="t ar">رَمَضان</span></td><td><span class="t fr active">21 février 2027</span><span class="t en">Feb 21, 2027</span><span class="t ar">21 فبراير 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Ramadan</span><span class="t en">Ramadan</span><span class="t ar">رَمَضان</span></td><td><span class="t fr active">22 février 2027</span><span class="t en">Feb 22, 2027</span><span class="t ar">22 فبراير 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Dhu al-Hijjah 1448</span><span class="t en">Dhu al-Hijjah 1448</span><span class="t ar">ذو الحِجَّة 1448</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Dhu al-Hijjah</span><span class="t en">Dhu al-Hijjah</span><span class="t ar">ذو الحجة</span></td><td><span class="t fr active">19 mai 2027</span><span class="t en">May 19, 2027</span><span class="t ar">19 ماي 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Dhu al-Hijjah</span><span class="t en">Dhu al-Hijjah</span><span class="t ar">ذو الحجة</span></td><td><span class="t fr active">20 mai 2027</span><span class="t en">May 20, 2027</span><span class="t ar">20 ماي 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Dhu al-Hijjah</span><span class="t en">Dhu al-Hijjah</span><span class="t ar">ذو الحجة</span></td><td><span class="t fr active">21 mai 2027</span><span class="t en">May 21, 2027</span><span class="t ar">21 ماي 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Shawwal 1448</span><span class="t en">Shawwal 1448</span><span class="t ar">شَوَّال 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Shawwal</span><span class="t en">Shawwal</span><span class="t ar">شَوَّال</span></td><td><span class="t fr active">21 mars 2027</span><span class="t en">Mar 21, 2027</span><span class="t ar">21 مارس 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Shawwal</span><span class="t en">Shawwal</span><span class="t ar">شَوَّال</span></td><td><span class="t fr active">22 mars 2027</span><span class="t en">Mar 22, 2027</span><span class="t ar">22 مارس 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Shawwal</span><span class="t en">Shawwal</span><span class="t ar">شَوَّال</span></td><td><span class="t fr active">23 mars 2027</span><span class="t en">Mar 23, 2027</span><span class="t ar">23 مارس 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Muharram 1449</span><span class="t en">Muharram 1449</span><span class="t ar">مُحَرَّم 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><span class="t fr active">18 juin 2027</span><span class="t en">Jun 18, 2027</span><span class="t ar">18 يونيو 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><span class="t fr active">19 juin 2027</span><span class="t en">Jun 19, 2027</span><span class="t ar">19 يونيو 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><span class="t fr active">20 juin 2027</span><span class="t en">Jun 20, 2027</span><span class="t ar">20 يونيو 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Dhu al-Qadah 1448</span><span class="t en">Dhu al-Qadah 1448</span><span class="t ar">ذو القَعْدة 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Dhu al-Qadah</span><span class="t en">Dhu al-Qadah</span><span class="t ar">ذو القعدة</span></td><td><span class="t fr active">20 avril 2027</span><span class="t en">Apr 20, 2027</span><span class="t ar">20 أبريل 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Dhu al-Qadah</span><span class="t en">Dhu al-Qadah</span><span class="t ar">ذو القعدة</span></td><td><span class="t fr active">21 avril 2027</span><span class="t en">Apr 21, 2027</span><span class="t ar">21 أبريل 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Dhu al-Qadah</span><span class="t en">Dhu al-Qadah</span><span class="t ar">ذو القعدة</span></td><td><span class="t fr active">22 avril 2027</span><span class="t en">Apr 22, 2027</span><span class="t ar">22 أبريل 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Safar 1449</span><span class="t en">Safar 1449</span><span class="t ar">صَفَر 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">17 juillet 2027</span><span class="t en">Jul 17, 2027</span><span class="t ar">17 يوليوز 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">18 juillet 2027</span><span class="t en">Jul 18, 2027</span><span class="t ar">18 يوليوز 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">19 juillet 2027</span><span class="t en">Jul 19, 2027</span><span class="t ar">19 يوليوز 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Dhu al-Hijjah 1448</span><span class="t en">Dhu al-Hijjah 1448</span><span class="t ar">ذو الحِجَّة 1448</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Dhu al-Hijjah</span><span class="t en">Dhu al-Hijjah</span><span class="t ar">ذو الحجة</span></td><td><span class="t fr active">19 mai 2027</span><span class="t en">May 19, 2027</span><span class="t ar">19 ماي 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Dhu al-Hijjah</span><span class="t en">Dhu al-Hijjah</span><span class="t ar">ذو الحجة</span></td><td><span class="t fr active">20 mai 2027</span><span class="t en">May 20, 2027</span><span class="t ar">20 ماي 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Dhu al-Hijjah</span><span class="t en">Dhu al-Hijjah</span><span class="t ar">ذو الحجة</span></td><td><span class="t fr active">21 mai 2027</span><span class="t en">May 21, 2027</span><span class="t ar">21 ماي 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Awwal 1449</span><span class="t en">Rabi' al-Awwal 1449</span><span class="t ar">رَبيع الأوَّل 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">15 août 2027</span><span class="t en">Aug 15, 2027</span><span class="t ar">15 غشت 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">16 août 2027</span><span class="t en">Aug 16, 2027</span><span class="t ar">16 غشت 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">17 août 2027</span><span class="t en">Aug 17, 2027</span><span class="t ar">17 غشت 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Muharram 1449</span><span class="t en">Muharram 1449</span><span class="t ar">مُحَرَّم 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><span class="t fr active">18 juin 2027</span><span class="t en">Jun 18, 2027</span><span class="t ar">18 يونيو 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><span class="t fr active">19 juin 2027</span><span class="t en">Jun 19, 2027</span><span class="t ar">19 يونيو 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Muharram</span><span class="t en">Muharram</span><span class="t ar">مُحَرَّم</span></td><td><span class="t fr active">20 juin 2027</span><span class="t en">Jun 20, 2027</span><span class="t ar">20 يونيو 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Thani 1449</span><span class="t en">Rabi' al-Thani 1449</span><span class="t ar">رَبيع الثاني 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">14 septembre 2027</span><span class="t en">Sep 14, 2027</span><span class="t ar">14 شتنبر 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">15 septembre 2027</span><span class="t en">Sep 15, 2027</span><span class="t ar">15 شتنبر 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">16 septembre 2027</span><span class="t en">Sep 16, 2027</span><span class="t ar">16 شتنبر 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Safar 1449</span><span class="t en">Safar 1449</span><span class="t ar">صَفَر 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">17 juillet 2027</span><span class="t en">Jul 17, 2027</span><span class="t ar">17 يوليوز 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">18 juillet 2027</span><span class="t en">Jul 18, 2027</span><span class="t ar">18 يوليوز 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Safar</span><span class="t en">Safar</span><span class="t ar">صَفَر</span></td><td><span class="t fr active">19 juillet 2027</span><span class="t en">Jul 19, 2027</span><span class="t ar">19 يوليوز 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Awwal 1449</span><span class="t en">Jumada al-Awwal 1449</span><span class="t ar">جُمادى الأولى 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">13 octobre 2027</span><span class="t en">Oct 13, 2027</span><span class="t ar">13 أكتوبر 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">14 octobre 2027</span><span class="t en">Oct 14, 2027</span><span class="t ar">14 أكتوبر 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">15 octobre 2027</span><span class="t en">Oct 15, 2027</span><span class="t ar">15 أكتوبر 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Awwal 1449</span><span class="t en">Rabi' al-Awwal 1449</span><span class="t ar">رَبيع الأوَّل 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">15 août 2027</span><span class="t en">Aug 15, 2027</span><span class="t ar">15 غشت 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">16 août 2027</span><span class="t en">Aug 16, 2027</span><span class="t ar">16 غشت 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' I</span><span class="t en">Rabi' I</span><span class="t ar">ربيع الأول</span></td><td><span class="t fr active">17 août 2027</span><span class="t en">Aug 17, 2027</span><span class="t ar">17 غشت 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Thani 1449</span><span class="t en">Jumada al-Thani 1449</span><span class="t ar">جُمادى الثانية 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">12 novembre 2027</span><span class="t en">Nov 12, 2027</span><span class="t ar">12 نونبر 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">13 novembre 2027</span><span class="t en">Nov 13, 2027</span><span class="t ar">13 نونبر 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">14 novembre 2027</span><span class="t en">Nov 14, 2027</span><span class="t ar">14 نونبر 2027</span></td></tr>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Rabi' al-Thani 1449</span><span class="t en">Rabi' al-Thani 1449</span><span class="t ar">رَبيع الثاني 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">14 septembre 2027</span><span class="t en">Sep 14, 2027</span><span class="t ar">14 شتنبر 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">15 septembre 2027</span><span class="t en">Sep 15, 2027</span><span class="t ar">15 شتنبر 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rabi' II</span><span class="t en">Rabi' II</span><span class="t ar">ربيع الثاني</span></td><td><span class="t fr active">16 septembre 2027</span><span class="t en">Sep 16, 2027</span><span class="t ar">16 شتنبر 2027</span></td></tr>
 
-      <tr class="month-sep"><td colspan="3"><span class="t fr active">Rajab 1449</span><span class="t en">Rajab 1449</span><span class="t ar">رَجَب 1449</span></td></tr>
-      <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">11 décembre 2027</span><span class="t en">Dec 11, 2027</span><span class="t ar">11 دجنبر 2027</span></td></tr>
-      <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">12 décembre 2027</span><span class="t en">Dec 12, 2027</span><span class="t ar">12 دجنبر 2027</span></td></tr>
-      <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">13 décembre 2027</span><span class="t en">Dec 13, 2027</span><span class="t ar">13 دجنبر 2027</span></td></tr>
-    </tbody>
-  </table>
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Awwal 1449</span><span class="t en">Jumada al-Awwal 1449</span><span class="t ar">جُمادى الأولى 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">13 octobre 2027</span><span class="t en">Oct 13, 2027</span><span class="t ar">13 أكتوبر 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">14 octobre 2027</span><span class="t en">Oct 14, 2027</span><span class="t ar">14 أكتوبر 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada I</span><span class="t en">Jumada I</span><span class="t ar">جمادى الأولى</span></td><td><span class="t fr active">15 octobre 2027</span><span class="t en">Oct 15, 2027</span><span class="t ar">15 أكتوبر 2027</span></td></tr>
 
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Jumada al-Thani 1449</span><span class="t en">Jumada al-Thani 1449</span><span class="t ar">جُمادى الثانية 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">12 novembre 2027</span><span class="t en">Nov 12, 2027</span><span class="t ar">12 نونبر 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">13 novembre 2027</span><span class="t en">Nov 13, 2027</span><span class="t ar">13 نونبر 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Jumada II</span><span class="t en">Jumada II</span><span class="t ar">جمادى الثانية</span></td><td><span class="t fr active">14 novembre 2027</span><span class="t en">Nov 14, 2027</span><span class="t ar">14 نونبر 2027</span></td></tr>
+
+        <tr class="month-sep"><td colspan="3"><span class="t fr active">Rajab 1449</span><span class="t en">Rajab 1449</span><span class="t ar">رَجَب 1449</span></td></tr>
+        <tr class="row-13"><td><span class="day-num">13</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">11 décembre 2027</span><span class="t en">Dec 11, 2027</span><span class="t ar">11 دجنبر 2027</span></td></tr>
+        <tr><td><span class="day-num">14</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">12 décembre 2027</span><span class="t en">Dec 12, 2027</span><span class="t ar">12 دجنبر 2027</span></td></tr>
+        <tr><td><span class="day-num">15</span></td><td><span class="t fr active">Rajab</span><span class="t en">Rajab</span><span class="t ar">رَجَب</span></td><td><span class="t fr active">13 décembre 2027</span><span class="t en">Dec 13, 2027</span><span class="t ar">13 دجنبر 2027</span></td></tr>
+      </tbody>
+    </table>
+
+  </main>
 </div>
 
 <footer>
   <span class="t fr active">
     Dates calculées selon les calendriers hégiriens 1448 & 1449, ajustées pour le Maroc.<br>
     Comme l'ensemble des calendriers islamiques annuels publiés dans le monde, ces dates sont des <strong>estimations astronomiques</strong>.<br>
-    La date exacte de chaque mois est confirmée officiellement par le <strong>Ministère des Habous et des Affaires Islamiques du Maroc</strong>.<br><br>
-    Sources : truecalendar.com (1448) · hijridate.org (1449) · Ministère des Habous (Muharram 1448 officiel)
+    La date exacte de chaque mois est confirmée officiellement par le <strong>Ministère des Habous et des Affaires Islamiques du Maroc</strong>.
   </span>
   <span class="t en">
-    Dates calculated based on Hijri calendars 1448 & 1449, adjusted for Morocco.<br>
+    Dates based on Hijri calendars 1448 & 1449, adjusted for Morocco.<br>
     As with all Islamic annual calendars published worldwide, these dates are <strong>astronomical estimates</strong>.<br>
-    The exact start of each month is officially confirmed by the <strong>Ministry of Habous and Islamic Affairs of Morocco</strong>.<br><br>
-    Sources: truecalendar.com (1448) · hijridate.org (1449) · Ministry of Habous (Muharram 1448 official)
+    Each month's exact start is officially confirmed by the <strong>Ministry of Habous and Islamic Affairs of Morocco</strong>.
   </span>
   <span class="t ar">
-    التواريخ محسوبة وفق التقويمين الهجريين 1448 و1449، مُعدَّلةً حسب التقويم المغربي.<br>
-    كسائر التقاويم الهجرية السنوية المنشورة في العالم، هذه التواريخ <strong>تقديرات فلكية</strong>.<br>
-    يُحدَّد أول كل شهر رسمياً من طرف <strong>وزارة الأوقاف والشؤون الإسلامية بالمغرب</strong>.<br><br>
-    المصادر: truecalendar.com (1448) · hijridate.org (1449) · وزارة الأوقاف (محرم 1448 رسمي)
+    التواريخ محسوبة وفق التقويمين الهجريين 1448 و1449، مُعدَّلةً للمغرب.<br>
+    كسائر التقاويم الهجرية السنوية، هذه التواريخ <strong>تقديرات فلكية</strong>.<br>
+    يُحدَّد أول كل شهر رسمياً من طرف <strong>وزارة الأوقاف والشؤون الإسلامية بالمغرب</strong>.
   </span>
 </footer>
 
 <script>
-function setLang(lang) {
-  // Update html dir
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+const ICS_B64 = "QkVHSU46VkNBTEVOREFSClZFUlNJT046Mi4wClBST0RJRDotLy9Kb3VycyBCbGFuY3MgTWFyb2MvL0ZSCkNBTFNDQUxFOkdSRUdPUklBTgpNRVRIT0Q6UFVCTElTSApYLVdSLUNBTE5BTUU6Sm91cnMgQmxhbmNzIOKAlCBNYXJvYwpYLVdSLUNBTERFU0M6TGVzIGpvdXJzIGJsYW5jcyAoQWwtQXl5YW0gQWwtQmlkKSBzZWxvbiBsZSBjYWxlbmRyaWVyIGjDqWdpcmllbiBtYXJvY2FpbiAyMDI2LTIwMjcKWC1XUi1USU1FWk9ORTpBZnJpY2EvQ2FzYWJsYW5jYQoKQkVHSU46VkVWRU5UClVJRDpqYi1tdWhhcnJhbS0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBNdWhhcnJhbSAxNDQ4CkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MDYyOQpEVEVORDtWQUxVRT1EQVRFOjIwMjYwNzAyCkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgTXVoYXJyYW0gMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXNhZmFyLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFNhZmFyIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYwNzI3CkRURU5EO1ZBTFVFPURBVEU6MjAyNjA3MzAKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBTYWZhciAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItcmFiaTEtMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgUmFiaScgYWwtQXd3YWwgMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA4MjYKRFRFTkQ7VkFMVUU9REFURToyMDI2MDgyOQpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFJhYmknIGFsLUF3d2FsIDE0NDguIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKQkVHSU46VkVWRU5UClVJRDpqYi1yYWJpMi0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBSYWJpJyBhbC1UaGFuaSAxNDQ4CkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MDkyNApEVEVORDtWQUxVRT1EQVRFOjIwMjYwOTI3CkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgUmFiaScgYWwtVGhhbmkgMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLWp1bWFkYTEtMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgSnVtYWRhIGFsLUF3d2FsIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMDI0CkRURU5EO1ZBTFVFPURBVEU6MjAyNjEwMjcKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBKdW1hZGEgYWwtQXd3YWwgMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLWp1bWFkYTItMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgSnVtYWRhIGFsLVRoYW5pIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMTIzCkRURU5EO1ZBTFVFPURBVEU6MjAyNjExMjYKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBKdW1hZGEgYWwtVGhhbmkgMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXJhamFiLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFJhamFiIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMjIyCkRURU5EO1ZBTFVFPURBVEU6MjAyNjEyMjUKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBSYWphYiAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItc2hhYmFuLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFNoYSdiYW4gMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzAxMjEKRFRFTkQ7VkFMVUU9REFURToyMDI3MDEyNApERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFNoYSdiYW4gMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXJhbWFkYW4tMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgUmFtYWRhbiAxNDQ4CkRUU1RBUlQ7VkFMVUU9REFURToyMDI3MDIyMApEVEVORDtWQUxVRT1EQVRFOjIwMjcwMjIzCkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgUmFtYWRhbiAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItc2hhd3dhbC0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBTaGF3d2FsIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwMzIxCkRURU5EO1ZBTFVFPURBVEU6MjAyNzAzMjQKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBTaGF3d2FsIDE0NDguIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKQkVHSU46VkVWRU5UClVJRDpqYi1kaHVxYWRhaC0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBEaHUgYWwtUWFkYWggMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA0MjAKRFRFTkQ7VkFMVUU9REFURToyMDI3MDQyMwpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIERodSBhbC1RYWRhaCAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItZGh1aGlqamFoLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIERodSBhbC1IaWpqYWggMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA1MTkKRFRFTkQ7VkFMVUU9REFURToyMDI3MDUyMgpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIERodSBhbC1IaWpqYWggMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLW11aGFycmFtLTE0NDlAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIE11aGFycmFtIDE0NDkKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwNjE4CkRURU5EO1ZBTFVFPURBVEU6MjAyNzA2MjEKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBNdWhhcnJhbSAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItc2FmYXItMTQ0OUBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgU2FmYXIgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA3MTcKRFRFTkQ7VkFMVUU9REFURToyMDI3MDcyMApERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFNhZmFyIDE0NDkuIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKQkVHSU46VkVWRU5UClVJRDpqYi1yYWJpMS0xNDQ5QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBSYWJpJyBhbC1Bd3dhbCAxNDQ5CkRUU1RBUlQ7VkFMVUU9REFURToyMDI3MDgxNQpEVEVORDtWQUxVRT1EQVRFOjIwMjcwODE4CkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgUmFiaScgYWwtQXd3YWwgMTQ0OS4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXJhYmkyLTE0NDlAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFJhYmknIGFsLVRoYW5pIDE0NDkKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwOTE0CkRURU5EO1ZBTFVFPURBVEU6MjAyNzA5MTcKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBSYWJpJyBhbC1UaGFuaSAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItanVtYWRhMS0xNDQ5QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBKdW1hZGEgYWwtQXd3YWwgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzEwMTMKRFRFTkQ7VkFMVUU9REFURToyMDI3MTAxNgpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIEp1bWFkYSBhbC1Bd3dhbCAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItanVtYWRhMi0xNDQ5QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBKdW1hZGEgYWwtVGhhbmkgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzExMTIKRFRFTkQ7VkFMVUU9REFURToyMDI3MTExNQpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIEp1bWFkYSBhbC1UaGFuaSAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItcmFqYWItMTQ0OUBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgUmFqYWIgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzEyMTEKRFRFTkQ7VkFMVUU9REFURToyMDI3MTIxNApERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFJhamFiIDE0NDkuIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKRU5EOlZDQUxFTkRBUgo=";
 
-  // Update buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-
-  // Update all translatable elements
-  document.querySelectorAll('.t').forEach(el => {
-    el.classList.toggle('active', el.classList.contains(lang));
-  });
-  document.querySelectorAll('.tb').forEach(el => {
-    el.classList.toggle('active', el.classList.contains(lang));
-  });
-}
-</script>
-
-
-<script>
 function downloadICS() {
-  const b64 = "QkVHSU46VkNBTEVOREFSClZFUlNJT046Mi4wClBST0RJRDotLy9Kb3VycyBCbGFuY3MgTWFyb2MvL0ZSCkNBTFNDQUxFOkdSRUdPUklBTgpNRVRIT0Q6UFVCTElTSApYLVdSLUNBTE5BTUU6Sm91cnMgQmxhbmNzIOKAlCBNYXJvYwpYLVdSLUNBTERFU0M6TGVzIGpvdXJzIGJsYW5jcyAoQWwtQXl5YW0gQWwtQmlkKSBzZWxvbiBsZSBjYWxlbmRyaWVyIGjDqWdpcmllbiBtYXJvY2FpbiAyMDI2LTIwMjcKWC1XUi1USU1FWk9ORTpBZnJpY2EvQ2FzYWJsYW5jYQoKQkVHSU46VkVWRU5UClVJRDpqYi1tdWhhcnJhbS0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBNdWhhcnJhbSAxNDQ4CkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MDYyOQpEVEVORDtWQUxVRT1EQVRFOjIwMjYwNzAyCkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgTXVoYXJyYW0gMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXNhZmFyLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFNhZmFyIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYwNzI3CkRURU5EO1ZBTFVFPURBVEU6MjAyNjA3MzAKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBTYWZhciAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItcmFiaTEtMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgUmFiaScgYWwtQXd3YWwgMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA4MjYKRFRFTkQ7VkFMVUU9REFURToyMDI2MDgyOQpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFJhYmknIGFsLUF3d2FsIDE0NDguIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKQkVHSU46VkVWRU5UClVJRDpqYi1yYWJpMi0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBSYWJpJyBhbC1UaGFuaSAxNDQ4CkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MDkyNApEVEVORDtWQUxVRT1EQVRFOjIwMjYwOTI3CkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgUmFiaScgYWwtVGhhbmkgMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLWp1bWFkYTEtMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgSnVtYWRhIGFsLUF3d2FsIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMDI0CkRURU5EO1ZBTFVFPURBVEU6MjAyNjEwMjcKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBKdW1hZGEgYWwtQXd3YWwgMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLWp1bWFkYTItMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgSnVtYWRhIGFsLVRoYW5pIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMTIzCkRURU5EO1ZBTFVFPURBVEU6MjAyNjExMjYKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBKdW1hZGEgYWwtVGhhbmkgMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXJhamFiLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFJhamFiIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMjIyCkRURU5EO1ZBTFVFPURBVEU6MjAyNjEyMjUKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBSYWphYiAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItc2hhYmFuLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFNoYSdiYW4gMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzAxMjEKRFRFTkQ7VkFMVUU9REFURToyMDI3MDEyNApERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFNoYSdiYW4gMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXJhbWFkYW4tMTQ0OEBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgUmFtYWRhbiAxNDQ4CkRUU1RBUlQ7VkFMVUU9REFURToyMDI3MDIyMApEVEVORDtWQUxVRT1EQVRFOjIwMjcwMjIzCkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgUmFtYWRhbiAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItc2hhd3dhbC0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBTaGF3d2FsIDE0NDgKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwMzIxCkRURU5EO1ZBTFVFPURBVEU6MjAyNzAzMjQKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBTaGF3d2FsIDE0NDguIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKQkVHSU46VkVWRU5UClVJRDpqYi1kaHVxYWRhaC0xNDQ4QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBEaHUgYWwtUWFkYWggMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA0MjAKRFRFTkQ7VkFMVUU9REFURToyMDI3MDQyMwpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIERodSBhbC1RYWRhaCAxNDQ4LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItZGh1aGlqamFoLTE0NDhAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIERodSBhbC1IaWpqYWggMTQ0OApEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA1MTkKRFRFTkQ7VkFMVUU9REFURToyMDI3MDUyMgpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIERodSBhbC1IaWpqYWggMTQ0OC4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLW11aGFycmFtLTE0NDlAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIE11aGFycmFtIDE0NDkKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwNjE4CkRURU5EO1ZBTFVFPURBVEU6MjAyNzA2MjEKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBNdWhhcnJhbSAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItc2FmYXItMTQ0OUBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgU2FmYXIgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA3MTcKRFRFTkQ7VkFMVUU9REFURToyMDI3MDcyMApERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFNhZmFyIDE0NDkuIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKQkVHSU46VkVWRU5UClVJRDpqYi1yYWJpMS0xNDQ5QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBSYWJpJyBhbC1Bd3dhbCAxNDQ5CkRUU1RBUlQ7VkFMVUU9REFURToyMDI3MDgxNQpEVEVORDtWQUxVRT1EQVRFOjIwMjcwODE4CkRFU0NSSVBUSU9OOkpvdXJzIDEzXCwgMTQgZXQgMTUgZGUgUmFiaScgYWwtQXd3YWwgMTQ0OS4gSmXDu25lciBjZXMgdHJvaXMgam91cnMgw6lxdWl2YXV0IMOgIGplw7tuZXIgbGUgbW9pcyBlbnRpZXIuXG5cbkhhZGl0aCA6IMKrIMOUIEFib3UgRGhhcnJcLCBzaSB0dSBqZcO7bmVzIHRyb2lzIGpvdXJzIGNoYXF1ZSBtb2lzXCwgamXDu25lIGxlcyB0cmVpemnDqG1lXCwgcXVhdG9yemnDqG1lIGV0IHF1aW56acOobWUuIMK7IChBdC1UaXJtaWRow64gbsKwNzYxKQpFTkQ6VkVWRU5UCgpCRUdJTjpWRVZFTlQKVUlEOmpiLXJhYmkyLTE0NDlAaG9ycml6em9uClNVTU1BUlk68J+MlSBKb3VycyBCbGFuY3Mg4oCUIFJhYmknIGFsLVRoYW5pIDE0NDkKRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwOTE0CkRURU5EO1ZBTFVFPURBVEU6MjAyNzA5MTcKREVTQ1JJUFRJT046Sm91cnMgMTNcLCAxNCBldCAxNSBkZSBSYWJpJyBhbC1UaGFuaSAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItanVtYWRhMS0xNDQ5QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBKdW1hZGEgYWwtQXd3YWwgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzEwMTMKRFRFTkQ7VkFMVUU9REFURToyMDI3MTAxNgpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIEp1bWFkYSBhbC1Bd3dhbCAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItanVtYWRhMi0xNDQ5QGhvcnJpenpvbgpTVU1NQVJZOvCfjJUgSm91cnMgQmxhbmNzIOKAlCBKdW1hZGEgYWwtVGhhbmkgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzExMTIKRFRFTkQ7VkFMVUU9REFURToyMDI3MTExNQpERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIEp1bWFkYSBhbC1UaGFuaSAxNDQ5LiBKZcO7bmVyIGNlcyB0cm9pcyBqb3VycyDDqXF1aXZhdXQgw6AgamXDu25lciBsZSBtb2lzIGVudGllci5cblxuSGFkaXRoIDogwqsgw5QgQWJvdSBEaGFyclwsIHNpIHR1IGplw7tuZXMgdHJvaXMgam91cnMgY2hhcXVlIG1vaXNcLCBqZcO7bmUgbGVzIHRyZWl6acOobWVcLCBxdWF0b3J6acOobWUgZXQgcXVpbnppw6htZS4gwrsgKEF0LVRpcm1pZGjDriBuwrA3NjEpCkVORDpWRVZFTlQKCkJFR0lOOlZFVkVOVApVSUQ6amItcmFqYWItMTQ0OUBob3JyaXp6b24KU1VNTUFSWTrwn4yVIEpvdXJzIEJsYW5jcyDigJQgUmFqYWIgMTQ0OQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzEyMTEKRFRFTkQ7VkFMVUU9REFURToyMDI3MTIxNApERVNDUklQVElPTjpKb3VycyAxM1wsIDE0IGV0IDE1IGRlIFJhamFiIDE0NDkuIEplw7tuZXIgY2VzIHRyb2lzIGpvdXJzIMOpcXVpdmF1dCDDoCBqZcO7bmVyIGxlIG1vaXMgZW50aWVyLlxuXG5IYWRpdGggOiDCqyDDlCBBYm91IERoYXJyXCwgc2kgdHUgamXDu25lcyB0cm9pcyBqb3VycyBjaGFxdWUgbW9pc1wsIGplw7tuZSBsZXMgdHJlaXppw6htZVwsIHF1YXRvcnppw6htZSBldCBxdWluemnDqG1lLiDCuyAoQXQtVGlybWlkaMOuIG7CsDc2MSkKRU5EOlZFVkVOVAoKRU5EOlZDQUxFTkRBUgo=";
-  const binary = atob(b64);
+  const binary = atob(ICS_B64);
   const bytes = new Uint8Array(binary.length);
   for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
   const blob = new Blob([bytes], {type: 'text/calendar;charset=utf-8'});
@@ -410,7 +402,17 @@ function downloadICS() {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
-</script>
 
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.querySelectorAll('.t, .tb').forEach(el => {
+    el.classList.toggle('active', el.classList.contains(lang));
+  });
+}
+</script>
 </body>
 </html>
